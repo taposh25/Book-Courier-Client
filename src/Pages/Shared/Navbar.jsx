@@ -1,51 +1,73 @@
 
-import bookLogo from '../../assets/Book_Logo.png'
+
 import { RiBookLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
 
-  const navItems = <>
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/book">Book Parcel</NavLink></li>
-    <li><NavLink to="/track">Track Parcel</NavLink></li>
-    <li><NavLink to="/pricing">Pricing</NavLink></li>
-  </>
+  const navItems = (
+    <>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/book">Book Parcel</NavLink></li>
+      <li><NavLink to="/track">Track Parcel</NavLink></li>
+      <li><NavLink to="/pricing">Pricing</NavLink></li>
+    </>
+  );
 
   return (
     <div className="navbar bg-base-100 shadow sticky top-0 z-50">
-      {/* logo */}
+      {/* left */}
       <div className="flex-1">
         <Link to="/" className="text-xl font-bold flex items-center gap-2">
-         <img className='w-[120px] h-[35px]' src={bookLogo}/>
+          <RiBookLine className="text-primary text-4xl" />
+          BookCourier
         </Link>
       </div>
 
-      {/* menu desktop */}
-      <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+      {/* center (desktop only) */}
+      <div className="hidden lg:flex mx-auto">
+        <ul className="menu menu-horizontal">{navItems}</ul>
       </div>
 
-      {/* profile right side */}
-      <div className="dropdown dropdown-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <img width="32" src="/user.png" />
-        </label>
-        <ul tabIndex={0} className="menu dropdown-content bg-base-100 shadow w-52 mt-3">
-          <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-          <li><NavLink to="/profile">Profile</NavLink></li>
-          <li><button>Logout</button></li>
-        </ul>
+      {/* right side always */}
+      <div className="flex-none hidden lg:block">
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <img width="32" src="/user.png" />
+          </label>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 mt-3">
+            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            <li><NavLink to="/profile">Profile</NavLink></li>
+            <li><button>Logout</button></li>
+          </ul>
+        </div>
       </div>
 
-      {/* mobile menu */}
-      <div className="lg:hidden dropdown">
-        <label tabIndex={0} className="btn btn-ghost">
-          <svg width="24" height="24">...</svg>
-        </label>
-        <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52">
-          {navItems}
-        </ul>
+      {/* mobile layout */}
+      <div className="lg:hidden flex items-center gap-2">
+        {/* mobile profile */}
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <img width="32" src="/user.png" />
+          </label>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 mt-3">
+            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+            <li><NavLink to="/profile">Profile</NavLink></li>
+            <li><button>Logout</button></li>
+          </ul>
+        </div>
+
+        {/* mobile menu */}
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn btn-ghost">
+            <svg width="24" height="24">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </label>
+          <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 right-0 mt-3">
+            {navItems}
+          </ul>
+        </div>
       </div>
     </div>
   );

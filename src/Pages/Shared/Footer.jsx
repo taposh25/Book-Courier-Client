@@ -1,11 +1,88 @@
-import React from 'react';
+
+import { RiFacebookFill, RiInstagramFill, RiLinkedinBoxFill, RiPhoneFill, RiMailFill, RiBookLine } from "react-icons/ri";
+import { SlSocialFacebook } from "react-icons/sl";
+import { TiSocialInstagram, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
+import { Link } from "react-router";
+import Logo from "../../component/Logo/Logo";
 
 const Footer = () => {
-    return (
+  return (
+    <footer className="bg-base-200 pt-10 pb-6">
+      <div className="container mx-auto px-5 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+        {/* logo */}
         <div>
-           <h3> footer part</h3>
+            <Link to="/" className="text-xl font-bold flex items-center gap-2">
+                <RiBookLine className="text-primary text-4xl" />BookCourier
+            </Link>
+            
+         
+          <p className="text-sm text-gray-600">
+            Fastest & Secure parcel delivery across Bangladesh.
+          </p>
         </div>
-    );
-};
+
+        {/* Company */}
+        <div>
+          <h4 className="footer-title">Company</h4>
+          <ul className="space-y-2">
+            <li><Link to="/">About Us</Link></li>
+            <li><Link to="/">Careers</Link></li>
+            <li><Link to="/">International Delivery</Link></li>
+          </ul>
+        </div>
+
+        {/* Support */}
+        <div>
+          <h4 className="footer-title">Support</h4>
+          <ul className="space-y-2">
+            <li><Link to="/track">Track Parcel</Link></li>
+            <li><Link to="/pricing">Pricing</Link></li>
+            <li><Link to="/book">Book a Delivery</Link></li>
+          </ul>
+        </div>
+
+        {/* contact */}
+        <div>
+          <h4 className="footer-title">Contact</h4>
+          <p className="flex items-center gap-2"><RiPhoneFill/> +880 01234-567890</p>
+          <p className="flex items-center gap-2"><RiMailFill/> support@bookcourier.com</p>
+
+        
+                <div className="flex gap-3 mt-2">
+
+                <button className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition">
+                    <SlSocialFacebook size={18} />
+                </button>
+
+                <button className="p-2 rounded-full bg-sky-500 text-white hover:bg-sky-600 transition">
+                    <TiSocialTwitter size={18} />
+                </button>
+
+                <button className="p-2 rounded-full bg-pink-600 text-white hover:bg-pink-700 transition">
+                    <TiSocialInstagram size={18} />
+                </button>
+
+                <button className="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition">
+                    <TiSocialLinkedin size={18} />
+                </button>
+                
+                </div>
+
+
+
+
+        </div>
+      </div>
+
+      {/* bottom copyright */}
+      <hr className="border-gray-300 my-5" />
+
+      <p className="text-center text-gray-500 text-sm">
+        © {new Date().getFullYear()} BookCourier — All Rights Reserved.
+      </p>
+    </footer>
+  )
+}
 
 export default Footer;
