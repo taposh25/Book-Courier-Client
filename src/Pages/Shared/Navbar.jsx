@@ -2,6 +2,7 @@
 
 import { RiBookLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router";
+import Logo from "../../component/Logo/Logo";
 
 const Navbar = () => {
 
@@ -20,8 +21,9 @@ const Navbar = () => {
       {/* left */}
       <div className="flex-1">
         <Link to="/" className="text-xl font-bold flex items-center gap-2">
-          <RiBookLine className="text-primary text-4xl" />
-          BookCourier
+          {/* <RiBookLine className="text-primary text-4xl" />
+          BookCourier */}
+          <Logo></Logo>
         </Link>
       </div>
 

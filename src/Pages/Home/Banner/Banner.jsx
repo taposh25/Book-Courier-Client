@@ -1,74 +1,95 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-import book1 from "../../../assets/Python_Learning.jpg";
-import book2 from "../../../assets/machine_Learning.jpg";
-import book3 from "../../../assets/Javascript_Learning.jpeg";
 import { Carousel } from "react-responsive-carousel";
+
+import book1 from '../../../assets/book1.png';
+import book2 from '../../../assets/book2.png';
+import book3 from '../../../assets/book3.png';
+import book4 from '../../../assets/book4.png';
 import { Link } from "react-router";
 
 const Banner = () => {
-  const slides = [
+  const books = [
     {
-      image: book1,
-      title: "Python Learning",
-      description: "Master Python with practical examples and projects.",
-      link: "/books",
+      img: book1,
+      title: "Thunmanhandiya",
+      desc: "A beautiful poetic literature piece.",
+      writer: "Mahagamasekara",
+      id: 1
     },
     {
-      image: book2,
-      title: "Machine Learning",
-      description: "Step by step guide to become a Machine Learning expert.",
-      link: "/books",
+      img: book2,
+      title: "Gamperaliya",
+      desc: "A masterpiece of Sri Lankan history.",
+      writer: "Martin Wickramasinghe",
+      id: 2
     },
     {
-      image: book3,
-      title: "JavaScript Learning",
-      description: "Learn JavaScript from beginner to advanced level.",
-      link: "/books",
+      img: book3,
+      title: "Nectar in a Sieve",
+      desc: "A story about Indian struggle and life.",
+      writer: "Kamala Markandaya",
+      id: 3
+    },
+    {
+      img: book4,
+      title: "Adaraneeya Victoria",
+      desc: "A romantic and emotional Sri Lankan novel.",
+      writer: "Mohan Raj Madawala",
+      id: 4
     },
   ];
 
   return (
-    <div className="w-full mt-8">
-      <Carousel
-        autoPlay={true}
-        infiniteLoop={true}
-        showThumbs={false}
-        showStatus={false}
-        interval={2000}
-        swipeable
-        emulateTouch
-        showArrows={true}
-        dynamicHeight={false}
-      >
-        {slides.map((slide, index) => (
-          <div key={index} className="relative w-full flex justify-center">
-            {/* Image */}
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full max-h-[600px] md:max-h-[700px] object-cover"
-            />
+    <section className="py-12 bg-white">
+      <h2 className="text-center text-3xl font-bold mb-6">
+        Our Best Picks
+      </h2>
 
-            {/* Overlay content */}
-            <div className="absolute inset-0 flex flex-col justify-center items-start px-6 md:px-16 py-4 md:py-8 bg-black bg-opacity-20">
-              <h2 className="text-2xl md:text-5xl font-bold text-white mb-2 md:mb-4 drop-shadow-lg">
-                {slide.title}
-              </h2>
-              <p className="text-sm md:text-lg text-white mb-4 md:mb-6 drop-shadow-md">
-                {slide.description}
-              </p>
-              <Link to={slide.link}>
-                <button className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-2 md:py-3 rounded-3xl font-bold text-sm md:text-lg transition">
-                  See All Books
-                </button>
-              </Link>
+      <div className="max-w-5xl mx-auto px-4">
+        <Carousel
+          autoPlay={true}
+          infiniteLoop={true}
+        >
+          {books.map((b) => (
+            <div key={b.id} className="flex justify-center">
+              <div className="bg-white rounded-xl shadow-lg p-6 w-full">
+
+                {/* Bigger image that fits */}
+                <div className="flex justify-center">
+                  <img
+                    src={b.img}
+                    className="rounded-xl w-[360px] h-[480px] object-contain"
+                    alt={b.title}
+                  />
+                </div>
+
+                <h3 className="mt-4 text-xl text-secondary font-bold text-center">
+                  {b.title}
+                </h3>
+
+                <p className="text-gray-500 text-sm text-center">
+                  {b.writer}
+                </p>
+
+                <p className="text-gray-700 text-center my-2">
+                  {b.desc}
+                </p>
+
+                <div className="flex justify-center mt-3 mb-3">
+                 <Link to="/">
+                  <button className=" cursor-pointer px-5 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary/80">
+                    All books 
+                  </button>
+                 </Link>
+                </div>
+
+              </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+          ))}
+        </Carousel>
+      </div>
+    </section>
   );
 };
 
