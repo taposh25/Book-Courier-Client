@@ -8,7 +8,8 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/book">Book Parcel</NavLink></li>
+      <li><NavLink to="/book">Books</NavLink></li>
+      <li><NavLink to="/dashboard">Dashboard</NavLink></li>
       <li><NavLink to="/track">Track Parcel</NavLink></li>
       <li><NavLink to="/pricing">Pricing</NavLink></li>
     </>
@@ -25,7 +26,7 @@ const Navbar = () => {
       </div>
 
       {/* center (desktop only) */}
-      <div className="hidden lg:flex mx-auto">
+      <div className="hidden lg:flex flex-1 justify-center items-center">
         <ul className="menu menu-horizontal">{navItems}</ul>
       </div>
 
@@ -36,9 +37,9 @@ const Navbar = () => {
             <img width="32" src="/user.png" />
           </label>
           <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 mt-3">
-            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
             <li><NavLink to="/profile">Profile</NavLink></li>
             <li><button>Logout</button></li>
+            <li><NavLink to="/update">Update</NavLink></li>
           </ul>
         </div>
       </div>
