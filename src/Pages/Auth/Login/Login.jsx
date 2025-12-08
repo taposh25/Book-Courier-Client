@@ -1,7 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import logImg from '../../../assets/login_Img.png'
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useAuth from "../../../Hooks/useAuth";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const {
@@ -10,8 +12,19 @@ const Login = () => {
     formState: { errors }
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const{signInUser} = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = (data) => {
+    console.log('form data', data);
+    signInUser(data.email, data.password)
+    .then(result=>{
+        console.log(result.user);
+        navigate("/")
+    })
+    .catch(error=>{
+        console.log(error);
+    })
   };
 
   return (
@@ -39,7 +52,7 @@ const Login = () => {
             Login to Your Account!
           </h2>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
 
             {/* Email */}
             <input
@@ -80,11 +93,10 @@ const Login = () => {
             </Link>
           </p>
 
-          {/* google login */}
-          <button className="border mt-4 py-2 px-4 w-full rounded flex justify-center items-center gap-3">
-            <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5"/>
-            Login with Google
-          </button>
+        <SocialLogin></SocialLogin>
+
+                    
+
         </div>
       </div>
     </div>

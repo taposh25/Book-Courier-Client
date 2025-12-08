@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import registerImg from "../../../assets/login_Img.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import useAuth from "../../../Hooks/useAuth";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
   const {
@@ -15,11 +17,20 @@ const Register = () => {
     formState: { errors }
   } = useForm();
 
+  const {registerUser} = useAuth();
+
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleRegistration = (data) => {
+    console.log('after register',data);
+    registerUser(data.email, data.password)
+    .then(result =>{
+        console.log(result.user);
+    })
+    .catch(error=>{
+        console.log(error);
+    })
   };
 
   return (
@@ -42,7 +53,7 @@ const Register = () => {
             and start exploring a world of endless stories.
           </p>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(handleRegistration )} className="space-y-4">
 
             {/* Name */}
             <input
@@ -126,6 +137,8 @@ const Register = () => {
             Already have an account?
             <Link className="text-yellow-400" to="/login"> Login</Link>
           </p>
+          <p className="text-center font-bold">Or</p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
