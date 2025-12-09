@@ -77,7 +77,7 @@ const Banner = () => {
                 </p>
 
                 <div className="flex justify-center mt-3 mb-3">
-                 <Link to="/">
+                 <Link to="/all-books">
                   <button className=" cursor-pointer px-5 py-2 bg-primary text-white font-bold rounded-lg hover:bg-primary/80">
                     All books 
                   </button>

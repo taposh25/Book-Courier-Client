@@ -8,6 +8,10 @@ import Register from "../Pages/Auth/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import Coverage from "../Pages/Home/Coverage/Coverage";
 import AboutUs from "../Pages/Home/AboutUs/AboutUs";
+import PostBook from "../Pages/Home/PostBook/PostBook";
+import MyBooks from "../Pages/Home/MyBooks/MyBooks";
+
+
 
 
 export const router = createBrowserRouter([
@@ -25,15 +29,24 @@ export const router = createBrowserRouter([
           element:<PrivateRoute><AllBooks></AllBooks></PrivateRoute>
         },
          {
+        path: 'about-us',
+        Component: AboutUs,
+
+       },
+         {
         path: 'coverage',
         Component: Coverage,
         loader: () => fetch('/serviceCenters.json').then(res => res.json()),
       },
       {
-        path: 'about-us',
-        Component: AboutUs,
-
+        path: 'post-book',
+        Component: PostBook,
+      },
+      {
+        path: 'my-books',
+        element:<PrivateRoute><MyBooks></MyBooks></PrivateRoute>
       }
+     
     ]
   },
        {
@@ -53,5 +66,9 @@ export const router = createBrowserRouter([
         
         ]
 
-    },
+    }
+  
 ]);
+
+
+

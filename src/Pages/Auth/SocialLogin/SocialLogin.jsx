@@ -9,7 +9,7 @@ const SocialLogin = () => {
     const handleGoogleSignIn = ()=>{
         signInGoogle()
         .then(result=>{
-            console.log(result);
+            console.log(result.user);
             navigate("/")
         })
         .catch(error=>{

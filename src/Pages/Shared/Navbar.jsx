@@ -12,9 +12,11 @@ const Navbar = () => {
     <>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/all-books">All Books</NavLink></li>
+       <li><NavLink to="/post-book">Post Book</NavLink></li>
+       <li><NavLink to="/my-books">My Books</NavLink></li>
       <li><NavLink to="/dashboard">Dashboard</NavLink></li>
       <li><NavLink to="/coverage">Coverage</NavLink></li>
-      <li><NavLink to="/pricing">Pricing</NavLink></li>
+     
       
     </>
   );
@@ -62,6 +64,7 @@ const Navbar = () => {
                   src={user.photoURL || "/user.png"}
                   alt="profile"
                 />
+                
               </label>
 
               <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow-xl rounded-md w-52 mt-3">
