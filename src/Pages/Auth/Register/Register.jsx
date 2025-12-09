@@ -1,13 +1,12 @@
-// 
-
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import registerImg from "../../../assets/login_Img.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useAuth from "../../../Hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import axios from "axios";
 
 const Register = () => {
   const {
@@ -17,16 +16,48 @@ const Register = () => {
     formState: { errors }
   } = useForm();
 
-  const {registerUser} = useAuth();
+  const {registerUser, updateUserProfile} = useAuth();
+   const navigate = useNavigate();
 
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleRegistration = (data) => {
+        const profileImg = data.photo[0];
     console.log('after register',data);
+    
     registerUser(data.email, data.password)
     .then(result =>{
         console.log(result.user);
+
+        // store the iamge in form data
+       const formData = new FormData();
+        formData.append('image', profileImg);
+        const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host}`;
+
+        
+        axios.post(image_API_URL, formData)
+        .then(res=>{
+          // console.log('after image upload', res.data.data.url);
+          const photoURL = res.data.data.url;
+
+          //update user profile
+           const userProfile = {
+            displayName: data.name,
+            photoURL: photoURL
+            }
+             updateUserProfile(userProfile)
+             .then(()=>{
+              console.log('user profile updated done')
+             })
+             .catch(error=>{
+               console.log(error)
+             })
+
+        })
+
+
+        navigate("/");
     })
     .catch(error=>{
         console.log(error);

@@ -11,9 +11,9 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/book">Books</NavLink></li>
+      <li><NavLink to="/all-books">All Books</NavLink></li>
       <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-      <li><NavLink to="/track">Track Parcel</NavLink></li>
+      <li><NavLink to="/coverage">Coverage</NavLink></li>
       <li><NavLink to="/pricing">Pricing</NavLink></li>
       
     </>
