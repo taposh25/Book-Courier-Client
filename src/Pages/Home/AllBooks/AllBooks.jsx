@@ -61,6 +61,7 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { IoCartOutline } from "react-icons/io5";
+import { Link } from "react-router";
 
 const AllBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -150,6 +151,10 @@ const AllBooks = () => {
                     >
                       <IoCartOutline /> Add to Cart
                     </button>
+
+                <Link to={`/dashboard/books/${book._id}`}>
+                <button className="btn mt-3">View Details</button>
+              </Link>
                   </div>
                 </div>
               </div>

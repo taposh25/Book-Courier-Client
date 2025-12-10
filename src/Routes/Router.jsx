@@ -12,6 +12,8 @@ import PostBook from "../Pages/Home/PostBook/PostBook";
 import MyBooks from "../Pages/Home/MyBooks/MyBooks.jsx";
 import DashboardLayout from "../Layouts/DashboardLayout.jsx";
 import BookDetails from "../Pages/Dashboard/BookDetails/BookDetails.jsx";
+import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders.jsx";
+
 
 
 
@@ -74,9 +76,13 @@ export const router = createBrowserRouter([
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children:[
         {
-         path: 'book-details',
+         path: "books/:id",
          Component: BookDetails ,
         },
+        {
+          path: 'my-orders',
+          Component: MyOrders,
+        }
       ]
     }
   

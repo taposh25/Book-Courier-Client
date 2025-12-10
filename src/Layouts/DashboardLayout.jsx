@@ -2,8 +2,10 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import Logo from '../component/Logo/Logo';
 import { FaBook } from 'react-icons/fa6';
+import { IoCartOutline } from 'react-icons/io5';
 
 const DashboardLayout = () => {
+    
     return (
        
      <div className="drawer lg:drawer-open">
@@ -40,20 +42,32 @@ const DashboardLayout = () => {
         
 
         <li>
-        <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-          {/* Home icon */}
-         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-          <span className="is-drawer-close:hidden">Homepage</span>
+         <NavLink to="/">
+           <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+            {/* Home icon */}
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+           <span className="is-drawer-close:hidden">Homepage</span>
          </button>
+       </NavLink>
          </li>
 
                 {/* List item */}
 
 
-                <li>
-            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MyParcels" to="/dashboard/book-details">
+        <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="bookDetails" to="/books/${id}">
             <FaBook />           
              <span className="is-drawer-close:hidden">Book Details</span>
+            </NavLink>
+        </li>
+
+        
+        <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="myOrders"  to="/dashboard/my-orders">
+            <IoCartOutline />           
+            <span className="is-drawer-close:hidden">My Orders</span>
             </NavLink>
         </li>
 
