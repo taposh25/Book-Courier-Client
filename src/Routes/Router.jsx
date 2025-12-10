@@ -9,7 +9,9 @@ import PrivateRoute from "./PrivateRoute";
 import Coverage from "../Pages/Home/Coverage/Coverage";
 import AboutUs from "../Pages/Home/AboutUs/AboutUs";
 import PostBook from "../Pages/Home/PostBook/PostBook";
-import MyBooks from "../Pages/Home/MyBooks/MyBooks";
+import MyBooks from "../Pages/Home/MyBooks/MyBooks.jsx";
+import DashboardLayout from "../Layouts/DashboardLayout.jsx";
+import BookDetails from "../Pages/Dashboard/BookDetails/BookDetails.jsx";
 
 
 
@@ -44,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'my-books',
-        element:<PrivateRoute><MyBooks></MyBooks></PrivateRoute>
+        element:<PrivateRoute><MyBooks></MyBooks></PrivateRoute>,
       }
      
     ]
@@ -66,6 +68,16 @@ export const router = createBrowserRouter([
         
         ]
 
+    },
+    {
+      path: "dashboard",
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+      children:[
+        {
+         path: 'book-details',
+         Component: BookDetails ,
+        },
+      ]
     }
   
 ]);

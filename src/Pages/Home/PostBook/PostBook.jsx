@@ -59,7 +59,8 @@ const PostBook = () => {
 
         <input type="text" {...register("image")} placeholder="Image URL" className="input input-bordered w-full" required />
 
-        <input type="text" {...register("location")} placeholder="Location" className="input input-bordered w-full" />
+        <input type="text" {...register("writerDetails")} placeholder="Writer Details" className="input input-bordered w-full" />
+         <input type="text" {...register("aboutThisBook")} placeholder="About Book" className="input input-bordered w-full" />
 
         <select {...register("category")} className="select select-bordered w-full">
           <option>Novel</option>
