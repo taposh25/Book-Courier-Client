@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import Logo from '../component/Logo/Logo';
-import { FaBook } from 'react-icons/fa6';
+import { FaBook, FaDollarSign } from 'react-icons/fa6';
 import { IoCartOutline } from 'react-icons/io5';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const DashboardLayout = () => {
     
@@ -29,7 +30,7 @@ const DashboardLayout = () => {
 
             <Outlet></Outlet>
 
-        <div className="p-4">Page Content</div>
+       
         </div>
 
         <div className="drawer-side is-drawer-close:overflow-visible">
@@ -65,9 +66,26 @@ const DashboardLayout = () => {
         
         <li>
             <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
-            data-tip="myOrders"  to="/dashboard/my-orders">
+            data-tip="myOrder"  to="/dashboard/my-orders">
             <IoCartOutline />           
             <span className="is-drawer-close:hidden">My Orders</span>
+            </NavLink>
+        </li>
+
+         {/* <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="paymentSuccessfully"  to="/dashboard/payment-success/:orderId">
+              <FaCheckCircle />          
+            <span className="is-drawer-close:hidden">Payment Success</span>
+            </NavLink>
+        </li> */}
+
+         
+        <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="payment"  to="/dashboard/payment/:order._id">
+            <FaDollarSign />         
+            <span className="is-drawer-close:hidden">Payment</span>
             </NavLink>
         </li>
 

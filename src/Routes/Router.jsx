@@ -13,7 +13,7 @@ import MyBooks from "../Pages/Home/MyBooks/MyBooks.jsx";
 import DashboardLayout from "../Layouts/DashboardLayout.jsx";
 import BookDetails from "../Pages/Dashboard/BookDetails/BookDetails.jsx";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders.jsx";
-
+import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
 
 
 
@@ -82,7 +82,13 @@ export const router = createBrowserRouter([
         {
           path: 'my-orders',
           Component: MyOrders,
+        },
+        {
+          path: "payment/:orderId",
+          Component: Payment,
         }
+       
+        
       ]
     }
   

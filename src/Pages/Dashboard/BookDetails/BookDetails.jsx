@@ -81,7 +81,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
-import bookImg from "../../../assets/bookImage.png";
+// import bookImg from "../../../assets/bookImage.png";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 
@@ -178,7 +178,7 @@ const BookDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* LEFT - Image */}
         <div className="bg-white p-6 rounded shadow-md">
-          <img src={bookImg} alt={book.title} className="w-full object-cover rounded" />
+          <img src={book.image} alt={book.title} className="w-full object-cover rounded" />
         </div>
 
         {/* RIGHT - Info */}
