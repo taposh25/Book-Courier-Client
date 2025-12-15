@@ -19,7 +19,7 @@ const UsersManagement = () => {
      const handleMakeAdmin = user => {
         const roleInfo = { role: 'admin' }
        
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.modifiedCount) {
@@ -40,7 +40,7 @@ const UsersManagement = () => {
     const handleRemoveAdmin = user => {
         const roleInfo = { role: 'user' }
         
-        axiosSecure.patch(`/users/${user._id}`, roleInfo)
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo)
             .then(res => {
                 if (res.data.modifiedCount) {
                     queryClient.invalidateQueries(['users'])

@@ -16,8 +16,9 @@ import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders.jsx";
 import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
 import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess.jsx";
 import Rider from "../Pages/Rider/Rider.jsx";
-import ApproveRiders from "../Pages/Dashboard/ApproveRiders/ApproveRiders.jsx";
+import AdminRoute from "./AdminRoutes.jsx";
 import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement.jsx";
+import ApproveRiders from "../Pages/Dashboard/ApproveRiders/ApproveRiders.jsx";
 
 
 
@@ -101,11 +102,11 @@ export const router = createBrowserRouter([
         },
         {
           path: 'approve-riders',
-          Component: ApproveRiders,
+          element: <AdminRoute><ApproveRiders></ApproveRiders></AdminRoute>
         },
         {
           path: "users-management",
-          Component: UsersManagement,
+          element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
         }
        
         
