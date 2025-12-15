@@ -14,6 +14,10 @@ import DashboardLayout from "../Layouts/DashboardLayout.jsx";
 import BookDetails from "../Pages/Dashboard/BookDetails/BookDetails.jsx";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders.jsx";
 import Payment from "../Pages/Dashboard/Payment/Payment.jsx";
+import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess.jsx";
+import Rider from "../Pages/Rider/Rider.jsx";
+import ApproveRiders from "../Pages/Dashboard/ApproveRiders/ApproveRiders.jsx";
+import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement.jsx";
 
 
 
@@ -86,6 +90,22 @@ export const router = createBrowserRouter([
         {
           path: "payment/:orderId",
           Component: Payment,
+        },
+        {
+          path: "payment-success",
+          Component: PaymentSuccess,
+        },
+        {
+          path: 'rider',
+          Component: Rider,
+        },
+        {
+          path: 'approve-riders',
+          Component: ApproveRiders,
+        },
+        {
+          path: "users-management",
+          Component: UsersManagement,
         }
        
         

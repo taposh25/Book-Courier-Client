@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router';
 import Logo from '../component/Logo/Logo';
-import { FaBook, FaDollarSign } from 'react-icons/fa6';
+import { FaBook, FaDollarSign, FaUsers } from 'react-icons/fa6';
 import { IoCartOutline } from 'react-icons/io5';
 import { FaCheckCircle } from 'react-icons/fa';
+import { MdDirectionsBike, MdVerified } from 'react-icons/md';
+import useRole from '../Hooks/useRole';
 
 const DashboardLayout = () => {
+
+    const { role } = useRole();
     
     return (
        
@@ -55,18 +59,18 @@ const DashboardLayout = () => {
                 {/* List item */}
 
 
-        <li>
+        {/* <li>
             <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
-            data-tip="bookDetails" to="/books/${id}">
+            data-tip="Book Details" to="/books/${id}">
             <FaBook />           
              <span className="is-drawer-close:hidden">Book Details</span>
             </NavLink>
-        </li>
+        </li> */}
 
         
         <li>
             <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
-            data-tip="myOrder"  to="/dashboard/my-orders">
+            data-tip="My Order"  to="/dashboard/my-orders">
             <IoCartOutline />           
             <span className="is-drawer-close:hidden">My Orders</span>
             </NavLink>
@@ -81,13 +85,51 @@ const DashboardLayout = () => {
         </li> */}
 
          
-        <li>
+        {/* <li>
             <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
             data-tip="payment"  to="/dashboard/payment/:order._id">
             <FaDollarSign />         
             <span className="is-drawer-close:hidden">Payment</span>
             </NavLink>
+        </li> */}
+
+
+           <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="Register Rider"  to="/dashboard/rider">
+            <MdDirectionsBike />        
+            <span className="is-drawer-close:hidden">Register Rider</span>
+            </NavLink>
         </li>
+
+
+       
+
+
+
+    
+        {
+            role === 'admin' && <>
+
+         <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="Approve Rider"  to="/dashboard/approve-riders">
+            <MdVerified className="text-green-600 text-xl" />      
+            <span className="is-drawer-close:hidden">Approve Rider</span>
+            </NavLink>
+        </li>
+
+         <li>
+            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" 
+            data-tip="Users Management"  to="/dashboard/users-management">
+            <FaUsers />    
+            <span className="is-drawer-close:hidden">Users management</span>
+            </NavLink>
+        </li>
+
+            </>
+        }
+
 
                 <li>
                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Settings">

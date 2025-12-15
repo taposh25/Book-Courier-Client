@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import useAuth from "../../../Hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from "axios";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Register = () => {
   const {
@@ -18,17 +19,17 @@ const Register = () => {
 
   const {registerUser, updateUserProfile} = useAuth();
    const navigate = useNavigate();
-
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
   const handleRegistration = (data) => {
         const profileImg = data.photo[0];
     console.log('after register',data);
     
     registerUser(data.email, data.password)
-    .then(result =>{
-        console.log(result.user);
+    .then(()=>{
+        // console.log(result.user);
 
         // store the iamge in form data
        const formData = new FormData();
@@ -40,6 +41,19 @@ const Register = () => {
         .then(res=>{
           // console.log('after image upload', res.data.data.url);
           const photoURL = res.data.data.url;
+
+          // Create user in the database
+          const userInfo = {
+            email: data.email,
+            displayName: data.name,
+             photoURL: photoURL
+
+          }
+          axiosSecure.post("/users", userInfo)
+          .then(res=>{
+            if(res.data.insertedId)
+              console.log('user created in the databse');
+          })
 
           //update user profile
            const userProfile = {

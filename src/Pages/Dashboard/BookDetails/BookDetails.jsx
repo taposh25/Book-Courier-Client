@@ -1,94 +1,18 @@
-// import { useQuery } from "@tanstack/react-query"
-// import { useParams } from "react-router"
-// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-// import bookImg from "../../../assets/bookImage.png";
-
-
-// const BookDetails = () => {
-  
-//   const { id } = useParams()
-//     const axiosSecure = useAxiosSecure();
-
-//   const { data: book, isLoading } = useQuery({
-//     queryKey: ['book', id],
-//     queryFn: async() =>{
-//       const res = await axiosSecure.get(`/books/${id}`)
-//       return res.data
-//     }
-//   })
-
-//   if(isLoading) return <p>Loading...</p>
-
-//   return (
-//     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-10 bg-base-200">
-      
-//       {/* LEFT side */}
-//       <div className="bg-white p-8 shadow-md">
-//         <img src={bookImg} alt="" className="w-full rounded" />
-//       </div>
-
-//       {/* RIGHT side */}
-//       <div>
-//         <h1 className="text-4xl font-bold">
-//           {book.title}
-//         </h1>
-
-//         <p className="text-xl text-gray-500 mt-2">
-//           by {book.author}
-//         </p>
-
-//         <div className="mt-6">
-//           <h3 className="text-lg font-semibold">📚 Category:</h3>
-//           <p>{book.category}</p>
-//         </div>
-
-//         <div className="mt-6 text-yellow-600 text-2xl font-bold">
-//           Rs. {book.price}
-//         </div>
-
-//         <button className="btn btn-warning mt-6">
-//           Secure Copy Now
-//         </button>
-
-//       </div>
-
-
-//       <div className="col-span-2 p-12 bg-white shadow-md mt-12">
-//         <h2 className="font-bold text-2xl mb-5">About this book</h2>
-//         <p className="leading-8 text-gray-600">
-//           {book.writerDetails || "No description available"}
-//         </p>
-//       </div>
-
-//     </div>
-//   )
-// }
-
-// export default BookDetails
-
-
-
-
-
-
-
-
-
 
 import React, { useState } from "react";
-
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useParams } from "react-router";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 // import bookImg from "../../../assets/bookImage.png";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router";
 
 const BookDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth(); // assumes you have useAuth -> { user }
+  const { user } = useAuth(); 
+
   const queryClient = useQueryClient();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -140,6 +64,7 @@ const BookDetails = () => {
     if (!user) {
       Swal.fire("Please login", "You need to login to place an order.", "warning");
       return;
+      
     }
 
     const payload = {
@@ -184,7 +109,7 @@ const BookDetails = () => {
         {/* RIGHT - Info */}
         <div className="space-y-4">
           <h1 className="text-3xl md:text-4xl font-bold">{book.title}</h1>
-          <p className="text-lg text-gray-600">by {book.author}</p>
+          <p className="text-lg font-bold text-gray-600">by {book.author}</p>
 
           <div className="flex items-center gap-4 mt-3">
             <span className="badge badge-outline">Category: {book.category}</span>
@@ -194,7 +119,7 @@ const BookDetails = () => {
           <div className="mt-4 text-3xl font-extrabold text-yellow-600">Rs. {book.price}</div>
 
           <div className="flex gap-3 mt-6">
-            <button onClick={() => setIsModalOpen(true)} className="btn btn-primary">
+            <button onClick={() => setIsModalOpen(true)} className="btn btn-secondary">
               Order Now
             </button>
             <button onClick={() => window.print()} className="btn btn-ghost">
@@ -264,8 +189,9 @@ const BookDetails = () => {
               <div className="modal-action">
                 <button type="button" onClick={() => { setIsModalOpen(false); reset(); }} className="btn btn-ghost">Cancel</button>
 
-                <button type="submit" className={`btn btn-primary ${orderMutation.isLoading ? "loading" : ""}`}>
-                  {orderMutation.isLoading ? "Placing..." : "Place Order"}
+                <button type="submit" className={`btn btn-neutral ${orderMutation.isLoading ? "loading" : ""}`}>
+                  {orderMutation.isLoading ? "Placing..." : "Pleace Order"}
+                  
                 </button>
               </div>
             </form>

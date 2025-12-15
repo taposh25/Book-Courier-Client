@@ -26,11 +26,11 @@ const Navbar = () => {
     <div className="navbar bg-base-100 shadow sticky top-0 z-50">
       {/* left */}
       <div className="flex-1">
-        <Link to="/" className="text-xl font-bold flex items-center gap-2">
+        <span className="text-xl font-bold flex items-center gap-2">
           {/* <RiBookLine className="text-primary text-4xl" />
           BookCourier */}
           <Logo></Logo>
-        </Link>
+        </span>
       </div>
 
       {/* center (desktop only) */}
