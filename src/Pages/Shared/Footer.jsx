@@ -27,9 +27,9 @@ const Footer = () => {
         <div>
           <h4 className="footer-title">Company</h4>
           <ul className="space-y-2">
-            <li><Link to="/">About Us</Link></li>
-            <li><Link to="/">Careers</Link></li>
-            <li><Link to="/">International Delivery</Link></li>
+            <li><Link to="/about-us">About Us</Link></li>
+            <li><Link to="/career">Careers</Link></li>
+            <li><Link to="/delivery">International Delivery</Link></li>
           </ul>
         </div>
 
@@ -37,9 +37,9 @@ const Footer = () => {
         <div>
           <h4 className="footer-title">Support</h4>
           <ul className="space-y-2">
-            <li><Link to="/track">Track Parcel</Link></li>
+            <li><Link to="/track-percel">Track Parcel</Link></li>
             <li><Link to="/pricing">Pricing</Link></li>
-            <li><Link to="/book">Book a Delivery</Link></li>
+            <li><Link to="/book-delivery">Book a Delivery</Link></li>
           </ul>
         </div>
 

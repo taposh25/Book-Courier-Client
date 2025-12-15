@@ -66,24 +66,24 @@ import { Link } from "react-router";
 const AllBooks = () => {
   const axiosSecure = useAxiosSecure();
   const [books, setBooks] = useState([]);
-  const [visible, setVisible] = useState(8); // initially show 8 books
+  const [visible, setVisible] = useState(8); 
 
   useEffect(() => {
-    // Note: Assuming `useAxiosSecure` and the endpoint `/books` are correct
+  
     axiosSecure.get("/books")
       .then(res => setBooks(res.data))
-      .catch(err => console.error("Error fetching books:", err)); // Use console.error for errors
-  }, [axiosSecure]); // Added axiosSecure to dependency array
+      .catch(err => console.error("Error fetching books:", err)); 
+  }, [axiosSecure]); 
 
   const handleSeeMore = () => {
-    setVisible(prev => prev + 8); // show 8 more each click
+    setVisible(prev => prev + 8);
   };
   
   // Placeholder for a proper Add to Cart handler
-  const handleAddToCart = (bookId) => {
-      console.log(`Adding book with ID: ${bookId} to cart`);
-      // Implement your cart logic here (e.g., dispatching an action, API call)
-  }
+  // const handleAddToCart = (bookId) => {
+  //     console.log(`Adding book with ID: ${bookId} to cart`);
+  //     // Implement your cart logic here (e.g., dispatching an action, API call)
+  // }
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto">
@@ -99,14 +99,14 @@ const AllBooks = () => {
           {/* Card Grid - Mobile: 2 cols, Tablet/Laptop: 4 cols */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {books.slice(0, visible).map(book => (
-              // DaisyUI Card Component (Replicates the Look)
+            
               <div 
                 key={book._id} 
                 className="card bg-base-100 border border-gray-200 shadow-md hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Card Image */}
                 <figure className="h-48 pt-4 px-4 overflow-hidden">
-                    {/* The `object-contain` ensures the whole book cover is visible */}
+                
                     <img 
                         src={book.image} 
                         alt={book.title} 
@@ -137,7 +137,7 @@ const AllBooks = () => {
                     </p>
                   </div>
                   
-                  {/* Availability/Location (Small text) */}
+                  
                   <p className="text-xs text-success-content mt-1">
                       {book.location ? `Available at: ${book.location}` : 'Available across all branches'}
                   </p>
@@ -145,15 +145,15 @@ const AllBooks = () => {
 
                   {/* Add to Cart Button */}
                   <div className="card-actions justify-center w-full mt-3">
-                    <button 
+                    {/* <button 
                       onClick={() => handleAddToCart(book._id)} 
                       className="btn btn-sm btn-ghost border border-gray-300 hover:bg-gray-100 normal-case w-full text-sm"
                     >
                       <IoCartOutline /> Add to Cart
-                    </button>
+                    </button> */}
 
                 <Link to={`/dashboard/books/${book._id}`}>
-                <button className="btn mt-3">View Details</button>
+                <button className="btn mt-3 ">View Details</button>
               </Link>
                   </div>
                 </div>

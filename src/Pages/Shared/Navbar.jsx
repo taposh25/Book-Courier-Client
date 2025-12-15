@@ -18,6 +18,7 @@ const Navbar = () => {
       <li><NavLink to="/coverage">Coverage</NavLink></li>
      
      
+     
       
     </>
   );
@@ -38,20 +39,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal">{navItems}</ul>
       </div>
 
-      {/* right side always */}
-      {/* <div className="flex-none hidden lg:block">
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <img width="32" src="/user.png" />
-          </label>
-          <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 mt-3">
-            <li><NavLink to="/profile">Profile</NavLink></li>
-            <li><button>Logout</button></li>
-            <li><NavLink to="/update">Update</NavLink></li>
-          </ul>
-        </div>
-      </div> */}
-
+   
 
         {/* right side always */}
       <div className="flex-none hidden lg:block">
@@ -70,7 +58,7 @@ const Navbar = () => {
 
               <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow-xl rounded-md w-52 mt-3">
                 <li><NavLink to="/profile">Profile</NavLink></li>
-                <li><NavLink to="/update">Update Profile</NavLink></li>
+                <li><NavLink to="/update-profile">Update Profile</NavLink></li>
                 <li><button onClick={logOut}>Logout</button></li>
               </ul>
             </div>
@@ -125,9 +113,14 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost">
             <svg width="24" height="24">
               <path d="M4 6h16M4 12h16M4 18h16"/>
+               
             </svg>
+            <h2 className="flex items-center text-center">Menu</h2>
+           
+            
           </label>
           <ul tabIndex={0} className="dropdown-content menu bg-base-100 shadow w-52 right-0 mt-3">
+            
             {navItems}
           </ul>
         </div>

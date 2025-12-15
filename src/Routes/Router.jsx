@@ -19,6 +19,13 @@ import Rider from "../Pages/Rider/Rider.jsx";
 import AdminRoute from "./AdminRoutes.jsx";
 import UsersManagement from "../Pages/Dashboard/UsersManagement/UsersManagement.jsx";
 import ApproveRiders from "../Pages/Dashboard/ApproveRiders/ApproveRiders.jsx";
+import Profile from "../Pages/Profile/Profile.jsx";
+import UpdateProfile from "../Pages/Profile/UpdateProfile.jsx";
+import Careers from "../component/Careers/Careers.jsx";
+import Delivery from "../component/Delivery/Delivery.jsx";
+import TrackParcel from "../component/TrackParcel/TrackParcel.jsx";
+import Pricing from "../component/Pricing/Pricing.jsx";
+import BookDelivery from "../component/BookDeliver/BookDeliver.jsx";
 
 
 
@@ -37,11 +44,38 @@ export const router = createBrowserRouter([
           path: 'all-books',
           element:<PrivateRoute><AllBooks></AllBooks></PrivateRoute>
         },
-         {
+        {
         path: 'about-us',
         Component: AboutUs,
 
        },
+       {
+        path: 'career',
+        Component: Careers,
+       },
+       {
+         path: 'delivery',
+         Component: Delivery,
+       },
+       {
+         path: 'track-percel',
+         Component: TrackParcel,
+       },
+       {
+        path: 'pricing',
+        Component: Pricing,
+       },
+       {
+        path: 'book-delivery',
+        Component: BookDelivery,
+       },
+        
+         {
+        path: "/profile",
+        Component: Profile
+
+       },
+      
          {
         path: 'coverage',
         Component: Coverage,
@@ -54,6 +88,11 @@ export const router = createBrowserRouter([
       {
         path: 'my-books',
         element:<PrivateRoute><MyBooks></MyBooks></PrivateRoute>,
+      },
+
+      {
+        path: "/update-profile",
+        Component: UpdateProfile
       }
      
     ]
@@ -102,11 +141,12 @@ export const router = createBrowserRouter([
         },
         {
           path: 'approve-riders',
-          element: <AdminRoute><ApproveRiders></ApproveRiders></AdminRoute>
+          element: <AdminRoute><ApproveRiders></ApproveRiders></AdminRoute>,
+          
         },
         {
           path: "users-management",
-          element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>
+          element: <AdminRoute><UsersManagement></UsersManagement></AdminRoute>,
         }
        
         
