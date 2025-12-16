@@ -17,7 +17,6 @@ const BookDetails = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // 1) fetch single book
   const { data: book = {}, isLoading } = useQuery({
     queryKey: ["book", id],
     queryFn: async () => {
@@ -28,7 +27,6 @@ const BookDetails = () => {
     enabled: !!id,
   });
 
-  // 2) Order mutation
   const orderMutation = useMutation({
     mutationFn: async (orderPayload) => {
       const res = await axiosSecure.post("/orders", orderPayload);
@@ -50,7 +48,7 @@ const BookDetails = () => {
     },
   });
 
-  // 3) Form
+  //  Form
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     defaultValues: {
       name: user?.displayName || "",
@@ -76,12 +74,11 @@ const BookDetails = () => {
       name: user.displayName || formData.name,
       phone: formData.phone,
       address: formData.address,
-      // server also sets status/paymentStatus/createdAt, but safe to add here
+   
       status: "pending",
       paymentStatus: "unpaid",
     };
 
-    // confirm dialog
     Swal.fire({
       title: `Place order for "${book.title}"?`,
       html: `Price: <strong>Rs. ${book.price}</strong>`,
@@ -91,7 +88,7 @@ const BookDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         orderMutation.mutate(payload);
-        reset(); // reset form
+        reset(); 
       }
     });
   };
@@ -141,7 +138,7 @@ const BookDetails = () => {
             <h3 className="font-bold text-lg">Place Order for <span className="font-semibold">{book.title}</span></h3>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
-              {/* Name (readonly) */}
+              {/* Name */}
               <div>
                 <label className="label"><span className="label-text">Name</span></label>
                 <input
@@ -152,7 +149,7 @@ const BookDetails = () => {
                 />
               </div>
 
-              {/* Email (readonly) */}
+              {/* Email */}
               <div>
                 <label className="label"><span className="label-text">Email</span></label>
                 <input

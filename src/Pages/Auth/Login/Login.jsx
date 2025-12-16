@@ -76,6 +76,7 @@ const Login = () => {
               <p className="text-red-500 text-sm">Password is required</p>
             )}
 
+                {/*Forgate  Password */}
             <p className="text-right text-sm hover:text-yellow-400 cursor-pointer">
               Forgot Password?
             </p>
@@ -85,7 +86,7 @@ const Login = () => {
             </button>
           </form>
 
-          {/* create acc */}
+          {/* create account */}
           <p className="mt-4 text-sm">
             Don't have an account?{" "}
             <Link className="text-yellow-400" to="/register">
