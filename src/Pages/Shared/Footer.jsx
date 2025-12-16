@@ -75,7 +75,7 @@ const Footer = () => {
 
                </NavLink>
 
-                <NavLink to="">
+                <NavLink to="https://www.linkedin.com/in/taposh-barai-03s?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
                   <button className="p-2 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition">
                     <TiSocialLinkedin size={18} />
                 </button>
